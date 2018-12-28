@@ -35,6 +35,17 @@ def rowTurn(row_numb, direction):
     if(row_numb == 1):
         start = 0;
         end = 3;
+    elif(row_numb == 2):
+        if(direction == 1):
+            rowTurn(1,-1);
+            rowTurn(3,-1);
+            swap(0,3);
+            return;
+        else:
+            rowTurn(1,1);
+            rowTurn(3,1);
+            swap(0,4);
+            return;
     else:
         start = 6;
         end =9;
@@ -89,6 +100,17 @@ def colFlip(col_numb, direction):
     tempList4 = [];
     if(col_numb == 1):
         index = [0,3,6];
+    elif(col_numb == 2):
+        if(direction == 1):
+            colFlip(1,-1);
+            colFlip(3,-1);
+            swap(0,2);
+            return;
+        else:
+            colFlip(1,1);
+            colFlip(3,1);
+            swap(0,1);
+            return;
     else:
         index = [2,5,8];
     # If its the first row then we know the first 3 numbers from each array will be altered
@@ -134,8 +156,12 @@ def colFlip(col_numb, direction):
 
     return;
 
+def swap(start,end):
+    cube[start], cube[end] = cube[end], cube[start];
+    return;
 
-colFlip(3,-1);
+# colFlip(2,-1);
+rowTurn(2,-1);
 for x in range(len(cube[0])):
     print(cube[0][x]);
 
