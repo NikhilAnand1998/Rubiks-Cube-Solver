@@ -160,6 +160,46 @@ def swap(start,end):
     cube[start], cube[end] = cube[end], cube[start];
     return;
 
+# Print a specific side for debugging purposes
+# side == (0->front, 3->left, 4->right, 5->back)
+def printSide(side):
+    print(cube[side][0] + ' ' + cube[side][1] + ' ' + cube[side][2])
+    print(cube[side][3] + ' ' + cube[side][4] + ' ' + cube[side][5])
+    print(cube[side][6] + ' ' + cube[side][7] + ' ' + cube[side][8])
+
+def printAllSides():
+    print("Front Side")
+    printSide(0)    # Front side
+    print("=====")
+    print("Top Side")
+    printSide(1)    # Top side?
+    print("=====")
+    print("Bottom Side")
+    printSide(2)    # Bottom side?
+    print("=====")
+    print("Left Side")
+    printSide(3)    # Left Side
+    print("=====")
+    print("Right Side")
+    printSide(4)    # Right Side
+    print("=====")
+    print("Back Side")
+    printSide(5)    # Back Side
+    print("=====")
+
+printSide(0)    # Front side
+print("=====")
+printSide(1)    # Top side?
+print("=====")
+printSide(2)    # Bottom side?
+print("=====")
+printSide(3)    # Left Side
+print("=====")
+printSide(4)    # Right Side
+print("=====")
+printSide(5)    # Back Side
+print("=====")
+
 # colFlip(2,-1);
 rowTurn(2,-1);
 for x in range(len(cube[0])):
