@@ -164,19 +164,30 @@ def colFlip(col_numb, direction):
 
     return
 
-def faceRotate(level_numb, direction):
-# 1 = Clockwise and -1 = Counter-Clockwise
-    swap(0,2)
-    swap(1,2)
-    swap(2,5)
+# def faceRotate(level_numb, direction):
+# # 1 = Clockwise and -1 = Counter-Clockwise
+#     swap(0,2)
+#     swap(1,2)
+#     swap(2,5)
+def faceRotate(direction):
+    # 1 = clockwise or to the right and -1 = counter clockwise or to the left
+    if(direction == 1):
+        swap(3,0)
+        swap(5,3)
+        swap(4,5)
 
+    else:
+        swap(4,0)
+        swap(3,4)
+        swap(4,5)
+    return
 # Swap opposite faces of the cube (useful for 2nd row turn and 2nd col flip)
 def swap(start,end):
     cube[start], cube[end] = cube[end], cube[start]
     return
 
 # Function that returns which color is on the center of a passed in side
-# The color in the center dictates which color pieces should be on that side 
+# The color in the center dictates which color pieces should be on that side
 def getCenter(side):
     return cube[side][4]
 
@@ -208,7 +219,7 @@ def printAllSides():
     print("======")
 
 printAllSides()
-faceRotate(1,-1)
+# faceRotate(1,-1)
 printAllSides()
 
 # colFlip(2,-1)
