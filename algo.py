@@ -40,11 +40,15 @@ def rowTurn(row_numb, direction):
             rowTurn(1,-1);
             rowTurn(3,-1);
             swap(0,3);
+            swap(4,3);
+            swap(3,5);
             return;
         else:
             rowTurn(1,1);
             rowTurn(3,1);
             swap(0,4);
+            swap(3,4);
+            swap(4,5);
             return;
     else:
         start = 6;
@@ -105,11 +109,15 @@ def colFlip(col_numb, direction):
             colFlip(1,-1);
             colFlip(3,-1);
             swap(0,2);
+            swap(1,2);
+            swap(2,5);
             return;
         else:
             colFlip(1,1);
             colFlip(3,1);
             swap(0,1);
+            swap(5,1);
+            swap(5,2);
             return;
     else:
         index = [2,5,8];
@@ -160,6 +168,7 @@ def swap(start,end):
     cube[start], cube[end] = cube[end], cube[start];
     return;
 
+# rowTurn(2,-1);
 # Print a specific side for debugging purposes
 # side == (0->front, 3->left, 4->right, 5->back)
 def printSide(side):
@@ -200,9 +209,9 @@ print("=====")
 printSide(5)    # Back Side
 print("=====")
 
-# colFlip(2,-1);
-rowTurn(2,-1);
-for x in range(len(cube[0])):
-    print(cube[0][x]);
+# colFlip(2,1);
+#rowTurn(2,-1);
+# for x in range(len(cube[0])):
+#     print(cube[0][x]);
 
 # print(cube[1][1]);
