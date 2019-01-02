@@ -164,11 +164,6 @@ def colFlip(col_numb, direction):
 
     return
 
-# def faceRotate(level_numb, direction):
-# # 1 = Clockwise and -1 = Counter-Clockwise
-#     swap(0,2)
-#     swap(1,2)
-#     swap(2,5)
 def faceRotate(direction):
     # 1 = clockwise or to the right and -1 = counter clockwise or to the left
     if(direction == 1):
@@ -181,6 +176,7 @@ def faceRotate(direction):
         swap(3,4)
         swap(4,5)
     return
+
 # Swap opposite faces of the cube (useful for 2nd row turn and 2nd col flip)
 def swap(start,end):
     cube[start], cube[end] = cube[end], cube[start]
@@ -190,6 +186,86 @@ def swap(start,end):
 # The color in the center dictates which color pieces should be on that side
 def getCenter(side):
     return cube[side][4]
+
+# Function that returns the other color on the edge cubie.
+def getOtherEdgeColor(side, ele):
+    if (side == 0):
+        if (ele == 1): return cube[1][7]
+        else if (ele == 3): return cube[3][5]
+        else if (ele == 5): return cube[4][3]
+        else if (ele == 7): return cube[2][1]
+        else return 'x'
+    else if (side == 1):
+        if (ele == 1): return cube[5][1]
+        else if (ele == 3): return cube[3][1]
+        else if (ele == 5): return cube[4][1]
+        else if (ele == 7): return cube[0][1]
+        else return 'x'
+    else if (side == 2):
+        if (ele == 1): return cube[0][7]
+        else if (ele == 3): return cube[3][7]
+        else if (ele == 5): return cube[4][7]
+        else if (ele == 7): return cube[5][7]
+        else return 'x'
+    else if (side == 3):
+        if (ele == 1): return cube[1][3]
+        else if (ele == 3): return cube[5][5]
+        else if (ele == 5): return cube[0][3]
+        else if (ele == 7): return cube[2][3]
+        else return 'x'
+    else if (side == 4):
+        if (ele == 1): return cube[1][5]
+        else if (ele == 3): return cube[0][5]
+        else if (ele == 5): return cube[5][3]
+        else if (ele == 7): return cube[2][5]
+        else return 'x'
+    else if (side == 5):
+        if (ele == 1): return cube[1][1]
+        else if (ele == 3): return cube[4][5]
+        else if (ele == 5): return cube[3][3]
+        else if (ele == 7): return cube[2][7]
+        else return 'x'
+    else return 'y'
+            
+# Function that returns the other 2 colors on the corner cubie.
+def getOtherCornerColors(side, ele):
+    if (side == 0):
+        if (ele == 0): return [cube[3][2], cube[1][6]]
+        else if (ele == 2): return [cube[4][0], cube[1][8]]
+        else if (ele == 6): return [cube[3][8], cube[2][0]]
+        else if (ele == 8): return [cube[2][2], cube[4][6]]
+        else return ['x','x']
+    else if (side == 1):
+        if (ele == 0): return [cube[3][0], cube[5][2]]
+        else if (ele == 2): return [cube[4][2], cube[5][0]]
+        else if (ele == 6): return [cube[3][2], cube[0][0]]
+        else if (ele == 8): return [cube[0][2], cube[4][0]]
+        else return ['x','x']
+    else if (side == 2):
+        if (ele == 0): return [cube[0][6], cube[3][8]]
+        else if (ele == 2): return [cube[4][6], cube[0][8]]
+        else if (ele == 6): return [cube[3][6], cube[5][8]]
+        else if (ele == 8): return [cube[5][6], cube[4][8]]
+        else return ['x','x']
+    else if (side == 3):
+        if (ele == 0): return [cube[5][2], cube[1][0]]
+        else if (ele == 2): return [cube[0][0], cube[1][6]]
+        else if (ele == 6): return [cube[2][6], cube[5][8]]
+        else if (ele == 8): return [cube[0][6], cube[2][0]]
+        else return ['x','x']
+    else if (side == 4):
+        if (ele == 0): return [cube[0][2], cube[1][8]]
+        else if (ele == 2): return [cube[5][0], cube[1][2]]
+        else if (ele == 6): return [cube[0][8], cube[2][2]]
+        else if (ele == 8): return [cube[2][8], cube[5][6]]
+        else return ['x','x']
+    else if (side == 5):
+        if (ele == 0): return [cube[4][2], cube[1][2]]
+        else if (ele == 2): return [cube[3][0], cube[1][0]]
+        else if (ele == 6): return [cube[2][8], cube[4][8]]
+        else if (ele == 8): return [cube[2][6], cube[3][6]]
+        else return ['x','x']
+    else return ['y','y']   
 
 # Print a specific side for debugging purposes
 # side == (0->front, 1-> top, 2->bottom, 3->left, 4->right, 5->back)
@@ -220,7 +296,7 @@ def printAllSides():
 
 printAllSides()
 # faceRotate(1,-1)
-printAllSides()
+# printAllSides()
 
 # colFlip(2,-1)
 # rowTurn(2,1)
