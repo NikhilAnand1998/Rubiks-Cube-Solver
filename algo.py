@@ -194,38 +194,38 @@ def getOtherEdgeColor(side, ele):
         else if (ele == 3): return cube[3][5]
         else if (ele == 5): return cube[4][3]
         else if (ele == 7): return cube[2][1]
-        else return 'x'
+        else: return 'x'
     else if (side == 1):
         if (ele == 1): return cube[5][1]
         else if (ele == 3): return cube[3][1]
         else if (ele == 5): return cube[4][1]
         else if (ele == 7): return cube[0][1]
-        else return 'x'
+        else: return 'x'
     else if (side == 2):
         if (ele == 1): return cube[0][7]
         else if (ele == 3): return cube[3][7]
         else if (ele == 5): return cube[4][7]
         else if (ele == 7): return cube[5][7]
-        else return 'x'
+        else: return 'x'
     else if (side == 3):
         if (ele == 1): return cube[1][3]
         else if (ele == 3): return cube[5][5]
         else if (ele == 5): return cube[0][3]
         else if (ele == 7): return cube[2][3]
-        else return 'x'
+        else: return 'x'
     else if (side == 4):
         if (ele == 1): return cube[1][5]
         else if (ele == 3): return cube[0][5]
         else if (ele == 5): return cube[5][3]
         else if (ele == 7): return cube[2][5]
-        else return 'x'
+        else: return 'x'
     else if (side == 5):
         if (ele == 1): return cube[1][1]
         else if (ele == 3): return cube[4][5]
         else if (ele == 5): return cube[3][3]
         else if (ele == 7): return cube[2][7]
-        else return 'x'
-    else return 'y'
+        else: return 'x'
+    else: return 'y'
             
 # Function that returns the other 2 colors on the corner cubie.
 def getOtherCornerColors(side, ele):
@@ -234,38 +234,38 @@ def getOtherCornerColors(side, ele):
         else if (ele == 2): return [cube[4][0], cube[1][8]]
         else if (ele == 6): return [cube[3][8], cube[2][0]]
         else if (ele == 8): return [cube[2][2], cube[4][6]]
-        else return ['x','x']
+        else: return ['x','x']
     else if (side == 1):
         if (ele == 0): return [cube[3][0], cube[5][2]]
         else if (ele == 2): return [cube[4][2], cube[5][0]]
         else if (ele == 6): return [cube[3][2], cube[0][0]]
         else if (ele == 8): return [cube[0][2], cube[4][0]]
-        else return ['x','x']
+        else: return ['x','x']
     else if (side == 2):
         if (ele == 0): return [cube[0][6], cube[3][8]]
         else if (ele == 2): return [cube[4][6], cube[0][8]]
         else if (ele == 6): return [cube[3][6], cube[5][8]]
         else if (ele == 8): return [cube[5][6], cube[4][8]]
-        else return ['x','x']
+        else: return ['x','x']
     else if (side == 3):
         if (ele == 0): return [cube[5][2], cube[1][0]]
         else if (ele == 2): return [cube[0][0], cube[1][6]]
         else if (ele == 6): return [cube[2][6], cube[5][8]]
         else if (ele == 8): return [cube[0][6], cube[2][0]]
-        else return ['x','x']
+        else: return ['x','x']
     else if (side == 4):
         if (ele == 0): return [cube[0][2], cube[1][8]]
         else if (ele == 2): return [cube[5][0], cube[1][2]]
         else if (ele == 6): return [cube[0][8], cube[2][2]]
         else if (ele == 8): return [cube[2][8], cube[5][6]]
-        else return ['x','x']
+        else: return ['x','x']
     else if (side == 5):
         if (ele == 0): return [cube[4][2], cube[1][2]]
         else if (ele == 2): return [cube[3][0], cube[1][0]]
         else if (ele == 6): return [cube[2][8], cube[4][8]]
         else if (ele == 8): return [cube[2][6], cube[3][6]]
-        else return ['x','x']
-    else return ['y','y']   
+        else: return ['x','x']
+    else: return ['y','y']   
 
 # Print a specific side for debugging purposes
 # side == (0->front, 1-> top, 2->bottom, 3->left, 4->right, 5->back)
@@ -293,6 +293,16 @@ def printAllSides():
     print("Back Side")
     printSide(5)    # Back Side
     print("======")
+
+# Function to check if the top cross pieces are in the correct places
+# This also checks that the centers of the adjacent sides align with the edge piece colors
+def checkTopCross:
+    if (cube[0][1] == getCenter(0) and getOtherEdgeColor(0,1) == getCenter(1)) and (cube[0][3] == getCenter(0) and getOtherEdgeColor(0,3) == getCenter(3)) and (cube[0][5] == getCenter(0) and getOtherEdgeColor(0,5) == getCenter(4)) and (cube[0][7] == getCenter(0) and getOtherEdgeColor(0,7) == getCenter(2)):
+        return true
+    else:
+        return false
+
+def checkTopSide:
 
 printAllSides()
 # faceRotate(1,-1)
