@@ -375,11 +375,14 @@ def checkTopCross ():
 # Substep C: Find and Adjust Green/White edge piece
 # Substep D: Match situation and add rotations
 
+# Function that returns the side number of the specified color. This is used to orient the cube
 def centerSide (side_color):
     for x in range(len(cube)):
         if getCenter(x) == side_color:
             return x
     return 69
+
+# Function to to move the specified side to the top. Accepts side number
 def moveTop(side):
     #Top is side 1
     if(side == 0):
@@ -403,6 +406,7 @@ def moveTop(side):
         faceFlip(-1)
         return
 
+# Function to to move the specified side to the front. Accepts side number
 def moveFront(side):
     #Front is side 0
     if(side == 0):
@@ -418,12 +422,30 @@ def moveFront(side):
         faceRotate(1)
         return    
     return
+
 side_print = centerSide('W')
 moveTop(side_print)
 # print("Side with the white is: ",side_print)
 side_green = centerSide('G')
 moveFront(side_green)
 printAllSides()
+
+# Assuming that the top side is now White and the front side is now Green,
+# we want to find the edge piece that is white + green.
+# Where can it be? - First we find all the edge pieces that are of the color
+# white(color1 variable). Then out of those we find the poition of the one
+# that also has the other edge color as green(color 2 variable). 
+def findSpecifiedEdge(color1, color2):
+    # Edges can be at positions [][1], [][3], [][5] and [][7]. Hence, check these only
+    for x in range(len(cube)):
+        for y in range(1, 3, 5, 7):
+            if cube[x][y] == color1 and getOtherEdgeColor(x,y) == color2:
+                return [x,y]
+
+# Now that we know the position of that cube (x,y) that is (side, 0-8), we have to move it to the
+# right spot. The right spot is (0, 8) so that color1 is on top and color2 is in front.
+# Wishing I had a cube right now.. 
+
 
 # side_print = whiteSide();
 # print("Side with the white is: ",side_print)
