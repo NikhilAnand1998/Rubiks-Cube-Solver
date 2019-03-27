@@ -8,7 +8,7 @@ import string;
 # side_5 = [];
 # side_6 = [];
 
-cube = [['G','G','G','G','G','G','G','G','G'],['O','O','O','O','O','O','O','O','O'],['R','R','R','R','R','R','R','R','R'],['0','1','2','3','4','5','6','7','8'],['W','W','W','W','W','W','W','W','W'],['B','B','B','B','B','B','B','B','B']]
+cube = [['G','G','G','G','G','G','G','G','G'],['O','O','O','O','O','O','O','O','O'],['R','R','R','R','R','R','R','R','R'],['Y','Y','Y','Y','Y','Y','Y','Y','Y'],['W','W','W','W','W','W','W','W','W'],['B','B','B','B','B','B','B','B','B']]
 
 # string_1= raw_input('Type Side1 colors in order starting at the top left corner and go row by row for the whole side: (Use capital letters for colors Ex: YOB = Yellow, Orange, Blue): ');
 # cube[0] = list(string_1);
@@ -199,7 +199,7 @@ def faceFlip(direction):
         faceSwap(7,3,4)
         faceSwap(5,7,4)
         faceSwap(8,6,4)
-        
+
 
 def faceRotate(direction):
     # 1 = clockwise or to the right and -1 = counter clockwise or to the left
@@ -290,7 +290,7 @@ def getCenter(side):
 #         else if (ele == 7): return cube[2][7]
 #         else: return 'x'
 #     else: return 'y'
-            
+
 # # Function that returns the other 2 colors on the corner cubie.
 # def getOtherCornerColors(side, ele):
 #     if (side == 0):
@@ -329,7 +329,7 @@ def getCenter(side):
 #         else if (ele == 6): return [cube[2][8], cube[4][8]]
 #         else if (ele == 8): return [cube[2][6], cube[3][6]]
 #         else: return ['x','x']
-#     else: return ['y','y']   
+#     else: return ['y','y']
 
 # Print a specific side for debugging purposes
 # side == (0->front, 1-> top, 2->bottom, 3->left, 4->right, 5->back)
@@ -412,7 +412,7 @@ def moveFront(side):
     if(side == 0):
         return
     elif(side == 3):
-        faceRotate(1)    
+        faceRotate(1)
         return
     elif(side == 4):
         faceRotate(-1)
@@ -420,21 +420,21 @@ def moveFront(side):
     elif(side == 5):
         faceRotate(1)
         faceRotate(1)
-        return    
+        return
     return
 
-side_print = centerSide('W')
-moveTop(side_print)
+# side_print = centerSide('W')
+# moveTop(side_print)
 # print("Side with the white is: ",side_print)
-side_green = centerSide('G')
-moveFront(side_green)
-printAllSides()
+# side_green = centerSide('G')
+# moveFront(side_green)
+# printAllSides()
 
 # Assuming that the top side is now White and the front side is now Green,
 # we want to find the edge piece that is white + green.
 # Where can it be? - First we find all the edge pieces that are of the color
 # white(color1 variable). Then out of those we find the poition of the one
-# that also has the other edge color as green(color 2 variable). 
+# that also has the other edge color as green(color 2 variable).
 def findSpecifiedEdge(color1, color2):
     # Edges can be at positions [][1], [][3], [][5] and [][7]. Hence, check these only
     for x in range(len(cube)):
@@ -444,7 +444,8 @@ def findSpecifiedEdge(color1, color2):
 
 # Now that we know the position of that cube (x,y) that is (side, 0-8), we have to move it to the
 # right spot. The right spot is (0, 8) so that color1 is on top and color2 is in front.
-# Wishing I had a cube right now.. 
+# Wishing I had a cube right now..
+
 
 
 # side_print = whiteSide();
@@ -459,3 +460,40 @@ def findSpecifiedEdge(color1, color2):
 #     print(cube[0][x])
 
 # print(cube[1][1])
+
+
+#Step #2
+#Keep white on Top
+#Put green centre piece in Front
+#Find green/white/red corner piece
+#Move this corner piece to a specific position either bottom right or bottom left corner
+
+#First call - moveTop(centerSide('W'))
+#Next call- moveFront(centerSide('G'))
+
+#In this function we want to find the Green/White/Corner piece
+#We will do this by looping through the cube and checking only the corner pieces to see what corner colors they match with
+#We know the edges possible coordinates are: [0,6,2] (Top left corner) , [2,8,0] (Top right corner), [6,8,0] (bottom left corner), and lastly [8,6,2] (bottom right corner)
+#We will call this function with findTripleCorner('G','W','R')
+def findTripleCorner(color1,color2,color3):
+
+
+    for x in range (len(cube)):
+         #this is checking so you only go through this logic if one of the corner pieces on the current side is green white or red (later ill relplace with color1 color2 and color3)
+        moveFront(x)
+        print(x)
+        if(cube[x][0] == 'G' or cube[x][0] == 'W' or cube[x][0] ==  'R'  or cube[x][2] == 'G' or cube[x][2] == 'W' or cube[x][2] == 'R' or cube[x][6] == 'G' or cube[x][6] == 'W' or cube[x][6] == 'R'or cube[x][8] == 'G' or cube[x][8] == 'W' or cube[x][8] == 'R'):
+                if((cube[1][6] == 'G' or cube[1][6] =='W' or cube[1][6] == 'R') and (cube[3][2] == 'G' or cube[3][2] == 'W' or cube[3][2] == 'R') and (cube[0][0] == 'G' or cube[0][0] == 'W' or cube[0][0] == 'R' )):
+                    #return format is coordinate of the triple edge and the last number is the side number
+                    return [0,6,2,x]
+                elif((cube[1][8] == 'G' or cube[1][8] =='W' or cube[1][8] =='R') and (cube[4][0] == 'G' or cube[4][0] =='W' or cube[4][0] =='R') and (cube[0][2] == 'G' or cube[0][2] =='W' or cube[0][2] =='R' )):
+                    return[2,8,0,x]
+                elif((cube[3][8] == 'G' or cube[3][8] =='W' or cube[3][8] =='R') and (cube[2][0] == 'G' or cube[2][0] =='W' or cube[2][0] =='R') and (cube[0][6] == 'G' or cube[0][6] =='W' or cube[0][6] =='R' )):
+                    return[6,8,0,x]
+                elif((cube[4][6] == 'G' or cube[4][6] =='W' or cube[4][6] =='R') and (cube[2][2] == 'G' or cube[2][2] =='W' or cube[2][2] =='R') and (cube[0][8] == 'G' or cube[0][8] =='W' or cube[0][8] =='R' )):
+                    return[8,6,2,x]
+
+
+
+print(findTripleCorner('G','W','R'))
+# print(cube[0][2])
