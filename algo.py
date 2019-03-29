@@ -163,7 +163,18 @@ def colFlip(col_numb, direction):
         del tempList4[:]
 
     return
-def faceFlip(direction):
+
+def faceRotate(direction):
+    # 1 = Clockwise and -1 = Counter Clockwise
+    cubeRotate(1)
+    if (direction == 1):    # clockwise
+        colFlip(3,1)   
+    elif (direction == -1): # counter clockwise
+        colFlip(3,-1)
+    cubeRotate(-1)          # return to previous orientation
+
+
+def cubeFlip(direction):
     #1 is up and -1 is down
     if(direction == -1):
         swap(0,1)
@@ -201,7 +212,7 @@ def faceFlip(direction):
         faceSwap(8,6,4)
 
 
-def faceRotate(direction):
+def cubeRotate(direction):
     # 1 = clockwise or to the right and -1 = counter clockwise or to the left
     if(direction == 1):
         swap(3,0)
@@ -386,24 +397,24 @@ def centerSide (side_color):
 def moveTop(side):
     #Top is side 1
     if(side == 0):
-        faceFlip(1)
+        cubeFlip(1)
         return
     elif (side == 1):
         return
     elif (side == 2):
-        faceFlip(1)
-        faceFlip(1)
+        cubeFlip(1)
+        cubeFlip(1)
         return
     elif (side == 3):
-        faceRotate(1)
-        faceFlip(1)
+        cubeRotate(1)
+        cubeFlip(1)
         return
     elif (side == 4):
-        faceRotate(-1)
-        faceFlip(1)
+        cubeRotate(-1)
+        cubeFlip(1)
         return
     else :
-        faceFlip(-1)
+        cubeFlip(-1)
         return
 
 # Function to to move the specified side to the front. Accepts side number
@@ -412,14 +423,14 @@ def moveFront(side):
     if(side == 0):
         return
     elif(side == 3):
-        faceRotate(1)
+        cubeRotate(1)
         return
     elif(side == 4):
-        faceRotate(-1)
+        cubeRotate(-1)
         return
     elif(side == 5):
-        faceRotate(1)
-        faceRotate(1)
+        cubeRotate(1)
+        cubeRotate(1)
         return
     return
 
@@ -455,51 +466,69 @@ def moveEdgeToCorrectPosition(side, ele, color1, color2):
         if (ele == 3):
             # move face clockwise
             faceRotate(1)
-            colFlip(3,1)    # col 3 flip up
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 5):
             # move face counter clockwise
-            faceRotate(1)
-            colFlip(3,-1)    # col 3 flip down
+            faceRotate(-1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 7):
             # move face clockwise twice
             faceRotate(1)
-            colFlip(3,1)    # col 3 flip up
-            colFlip(3,1)    # col 3 flip up
+            faceRotate(1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
     # Handle cases when it is on the left side(3)
     elif (side == 3):
         if (ele == 1):
-            # do moves
+            colFlip(1, -1)
+            rowTurn(1,-1)
+            colFlip(3,1)
+            rowTurn(1,1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 3):
             # do moves
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 5):
-            # do moves
+            rowTurn(1,-1)
+            colFlip(3,1)
+            rowTurn(1,1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 7):
-            # do moves
+            rowTurn(3, 1)
+            # move face clockwise twice
+            faceRotate(1)
+            faceRotate(1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
     # Handle cases when it is on the right side(4)
     elif (side == 4):
         if (ele == 1):
-            # do moves
+            colFlip(3, -1)
+            rowTurn(1, 1)
+            colFlip(3, 1)
+            rowTurn(1, -1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 3):
-            # do moves
+            rowTurn(1,1)
+            colFlip(3,1)
+            rowTurn(1,-1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 5):
             # do moves
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 7):
-            # do moves
+            rowTurn(3, -1)
+            # move face clockwise twice
+            faceRotate(1)
+            faceRotate(1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
     # Handle cases when it is on the back side(5)
     elif (side == 5):
         if (ele == 1):
-            # do moves
+            faceRotate(1)
+            faceRotate(1)
+            rowTurn(3, 1)
+            rowTurn(3, 1)
+            faceRotate(1)
+            faceRotate(1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 3):
             # do moves
@@ -508,7 +537,11 @@ def moveEdgeToCorrectPosition(side, ele, color1, color2):
             # do moves
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 7):
-            # do moves
+            rowTurn(3, 1)
+            rowTurn(3, 1)
+            # move face clockwise twice
+            faceRotate(1)
+            faceRotate(1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
     # Handle cases when it is on the top side(1)
     elif (side == 1):
@@ -522,12 +555,18 @@ def moveEdgeToCorrectPosition(side, ele, color1, color2):
             # do moves
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 7):
-            # do moves
+            faceRotate(1)
+            rowTurn(1, 1)
+            colFlip(3, 1)
+            rowTurn(1, -1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
     # Handle cases when it is on the bottom side(2)
     elif (side == 2):
         if (ele == 1):
-            # do moves
+            faceRotate(-1)
+            rowTurn(1, 1)
+            colFlip(3, 1)
+            rowTurn(1, -1)
             recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
         elif (ele == 3):
             # do moves
@@ -547,7 +586,7 @@ def recover(colorTop, colorFront):
 
 # side_print = whiteSide();
 # print("Side with the white is: ",side_print)
-# faceRotate(1,-1)
+# cubeRotate(1,-1)
 # printAllSides()
 
 # colFlip(2,-1)
