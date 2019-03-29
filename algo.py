@@ -252,84 +252,84 @@ def getCenter(side):
     return cube[side][4]
 
 # Function that returns the other color on the edge cubie.
-# def getOtherEdgeColor(side, ele):
-#     if (side == 0):
-#         if (ele == 1): return cube[1][7]
-#         else if (ele == 3): return cube[3][5]
-#         else if (ele == 5): return cube[4][3]
-#         else if (ele == 7): return cube[2][1]
-#         else: return 'x'
-#     else if (side == 1):
-#         if (ele == 1): return cube[5][1]
-#         else if (ele == 3): return cube[3][1]
-#         else if (ele == 5): return cube[4][1]
-#         else if (ele == 7): return cube[0][1]
-#         else: return 'x'
-#     else if (side == 2):
-#         if (ele == 1): return cube[0][7]
-#         else if (ele == 3): return cube[3][7]
-#         else if (ele == 5): return cube[4][7]
-#         else if (ele == 7): return cube[5][7]
-#         else: return 'x'
-#     else if (side == 3):
-#         if (ele == 1): return cube[1][3]
-#         else if (ele == 3): return cube[5][5]
-#         else if (ele == 5): return cube[0][3]
-#         else if (ele == 7): return cube[2][3]
-#         else: return 'x'
-#     else if (side == 4):
-#         if (ele == 1): return cube[1][5]
-#         else if (ele == 3): return cube[0][5]
-#         else if (ele == 5): return cube[5][3]
-#         else if (ele == 7): return cube[2][5]
-#         else: return 'x'
-#     else if (side == 5):
-#         if (ele == 1): return cube[1][1]
-#         else if (ele == 3): return cube[4][5]
-#         else if (ele == 5): return cube[3][3]
-#         else if (ele == 7): return cube[2][7]
-#         else: return 'x'
-#     else: return 'y'
+def getOtherEdgeColor(side, ele):
+    if (side == 0):
+        if (ele == 1): return cube[1][7]
+        elif (ele == 3): return cube[3][5]
+        elif (ele == 5): return cube[4][3]
+        elif (ele == 7): return cube[2][1]
+        else: return 'x'
+    elif (side == 1):
+        if (ele == 1): return cube[5][1]
+        elif (ele == 3): return cube[3][1]
+        elif (ele == 5): return cube[4][1]
+        elif (ele == 7): return cube[0][1]
+        else: return 'x'
+    elif (side == 2):
+        if (ele == 1): return cube[0][7]
+        elif (ele == 3): return cube[3][7]
+        elif (ele == 5): return cube[4][7]
+        elif (ele == 7): return cube[5][7]
+        else: return 'x'
+    elif (side == 3):
+        if (ele == 1): return cube[1][3]
+        elif (ele == 3): return cube[5][5]
+        elif (ele == 5): return cube[0][3]
+        elif (ele == 7): return cube[2][3]
+        else: return 'x'
+    elif (side == 4):
+        if (ele == 1): return cube[1][5]
+        elif (ele == 3): return cube[0][5]
+        elif (ele == 5): return cube[5][3]
+        elif (ele == 7): return cube[2][5]
+        else: return 'x'
+    elif (side == 5):
+        if (ele == 1): return cube[1][1]
+        elif (ele == 3): return cube[4][5]
+        elif (ele == 5): return cube[3][3]
+        elif (ele == 7): return cube[2][7]
+        else: return 'x'
+    else: return 'y'
 
 # # Function that returns the other 2 colors on the corner cubie.
-# def getOtherCornerColors(side, ele):
-#     if (side == 0):
-#         if (ele == 0): return [cube[3][2], cube[1][6]]
-#         else if (ele == 2): return [cube[4][0], cube[1][8]]
-#         else if (ele == 6): return [cube[3][8], cube[2][0]]
-#         else if (ele == 8): return [cube[2][2], cube[4][6]]
-#         else: return ['x','x']
-#     else if (side == 1):
-#         if (ele == 0): return [cube[3][0], cube[5][2]]
-#         else if (ele == 2): return [cube[4][2], cube[5][0]]
-#         else if (ele == 6): return [cube[3][2], cube[0][0]]
-#         else if (ele == 8): return [cube[0][2], cube[4][0]]
-#         else: return ['x','x']
-#     else if (side == 2):
-#         if (ele == 0): return [cube[0][6], cube[3][8]]
-#         else if (ele == 2): return [cube[4][6], cube[0][8]]
-#         else if (ele == 6): return [cube[3][6], cube[5][8]]
-#         else if (ele == 8): return [cube[5][6], cube[4][8]]
-#         else: return ['x','x']
-#     else if (side == 3):
-#         if (ele == 0): return [cube[5][2], cube[1][0]]
-#         else if (ele == 2): return [cube[0][0], cube[1][6]]
-#         else if (ele == 6): return [cube[2][6], cube[5][8]]
-#         else if (ele == 8): return [cube[0][6], cube[2][0]]
-#         else: return ['x','x']
-#     else if (side == 4):
-#         if (ele == 0): return [cube[0][2], cube[1][8]]
-#         else if (ele == 2): return [cube[5][0], cube[1][2]]
-#         else if (ele == 6): return [cube[0][8], cube[2][2]]
-#         else if (ele == 8): return [cube[2][8], cube[5][6]]
-#         else: return ['x','x']
-#     else if (side == 5):
-#         if (ele == 0): return [cube[4][2], cube[1][2]]
-#         else if (ele == 2): return [cube[3][0], cube[1][0]]
-#         else if (ele == 6): return [cube[2][8], cube[4][8]]
-#         else if (ele == 8): return [cube[2][6], cube[3][6]]
-#         else: return ['x','x']
-#     else: return ['y','y']
+def getOtherCornerColors(side, ele):
+    if (side == 0):
+        if (ele == 0): return [cube[3][2], cube[1][6]]
+        elif (ele == 2): return [cube[4][0], cube[1][8]]
+        elif (ele == 6): return [cube[3][8], cube[2][0]]
+        elif (ele == 8): return [cube[2][2], cube[4][6]]
+        else: return ['x','x']
+    elif (side == 1):
+        if (ele == 0): return [cube[3][0], cube[5][2]]
+        elif (ele == 2): return [cube[4][2], cube[5][0]]
+        elif (ele == 6): return [cube[3][2], cube[0][0]]
+        elif (ele == 8): return [cube[0][2], cube[4][0]]
+        else: return ['x','x']
+    elif (side == 2):
+        if (ele == 0): return [cube[0][6], cube[3][8]]
+        elif (ele == 2): return [cube[4][6], cube[0][8]]
+        elif (ele == 6): return [cube[3][6], cube[5][8]]
+        elif (ele == 8): return [cube[5][6], cube[4][8]]
+        else: return ['x','x']
+    elif (side == 3):
+        if (ele == 0): return [cube[5][2], cube[1][0]]
+        elif (ele == 2): return [cube[0][0], cube[1][6]]
+        elif (ele == 6): return [cube[2][6], cube[5][8]]
+        elif (ele == 8): return [cube[0][6], cube[2][0]]
+        else: return ['x','x']
+    elif (side == 4):
+        if (ele == 0): return [cube[0][2], cube[1][8]]
+        elif (ele == 2): return [cube[5][0], cube[1][2]]
+        elif (ele == 6): return [cube[0][8], cube[2][2]]
+        elif (ele == 8): return [cube[2][8], cube[5][6]]
+        else: return ['x','x']
+    elif (side == 5):
+        if (ele == 0): return [cube[4][2], cube[1][2]]
+        elif (ele == 2): return [cube[3][0], cube[1][0]]
+        elif (ele == 6): return [cube[2][8], cube[4][8]]
+        elif (ele == 8): return [cube[2][6], cube[3][6]]
+        else: return ['x','x']
+    else: return ['y','y']
 
 # Print a specific side for debugging purposes
 # side == (0->front, 1-> top, 2->bottom, 3->left, 4->right, 5->back)
@@ -436,16 +436,113 @@ def moveFront(side):
 # white(color1 variable). Then out of those we find the poition of the one
 # that also has the other edge color as green(color 2 variable).
 def findSpecifiedEdge(color1, color2):
-    # Edges can be at positions [][1], [][3], [][5] and [][7]. Hence, check these only
+    # Edges can be at positions [x][1], [x][3], [x][5] and [x][7]. Hence, check these only
     for x in range(len(cube)):
-        for y in range(1, 3, 5, 7):
-            if cube[x][y] == color1 and getOtherEdgeColor(x,y) == color2:
+        for y in [1, 3, 5, 7]:
+            # Color 2 will be in front and color 1 should be on top. We want it from the perspective
+            # color 2
+            if cube[x][y] == color2 and getOtherEdgeColor(x,y) == color1:
                 return [x,y]
 
 # Now that we know the position of that cube (x,y) that is (side, 0-8), we have to move it to the
-# right spot. The right spot is (0, 8) so that color1 is on top and color2 is in front.
+# right spot. The right spot is (0, 1) so that color1 is on top and color2 is in front.
 # Wishing I had a cube right now..
+def moveEdgeToCorrectPosition(side, ele, color1, color2):
+    # If the edge is already in the right spot, return
+    if (side == 0) and (ele == 1): return
+    # Handle cases when it is on the front side(0)
+    if (side == 0):
+        if (ele == 3):
+            # move face clockwise
+            faceRotate(1)
+            colFlip(3,1)    # col 3 flip up
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 5):
+            # move face counter clockwise
+            faceRotate(1)
+            colFlip(3,-1)    # col 3 flip down
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 7):
+            # move face clockwise twice
+            faceRotate(1)
+            colFlip(3,1)    # col 3 flip up
+            colFlip(3,1)    # col 3 flip up
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+    # Handle cases when it is on the left side(3)
+    elif (side == 3):
+        if (ele == 1):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 3):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 5):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 7):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+    # Handle cases when it is on the right side(4)
+    elif (side == 4):
+        if (ele == 1):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 3):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 5):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 7):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+    # Handle cases when it is on the back side(5)
+    elif (side == 5):
+        if (ele == 1):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 3):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 5):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 7):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+    # Handle cases when it is on the top side(1)
+    elif (side == 1):
+        if (ele == 1):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 3):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 5):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 7):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+    # Handle cases when it is on the bottom side(2)
+    elif (side == 2):
+        if (ele == 1):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 3):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 5):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
+        elif (ele == 7):
+            # do moves
+            recover(color1, color2)     # recover to orientation with color1 on top and color2 in front
 
+# Function to come back to orientation after moves
+def recover(colorTop, colorFront):
+    moveTop(colorTop)
+    moveFront(colorFront)
 
 
 # side_print = whiteSide();
